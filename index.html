@@ -418,6 +418,7 @@
     <div class="skill-category">
       <div class="skill-category-name">大模型 & Agent 核心技术</div>
       <div class="skills-row">
+        <span class="skill-pill skill-pill--highlight">Skills建立</span>
         <span class="skill-pill skill-pill--highlight">LLM 微调 (SFT / LoRA)</span>
         <span class="skill-pill skill-pill--highlight">Prompt Engineering</span>
         <span class="skill-pill skill-pill--highlight">CoT 指令集设计</span>
@@ -469,80 +470,10 @@
     </div>
   </section>
 
-  <!-- ╔══════════════════════ 03 PROJECTS ══════════════════╗ -->
+  <!-- ╔══════════════════════ 03 EXPERIENCE ════════════════╗ -->
   <section class="section">
     <div class="section-head">
       <span class="section-num">03</span>
-      <h2 class="section-title">Projects</h2>
-    </div>
-
-    <div class="project">
-      <div class="project-head">
-        <span class="project-name">Qwen2.5-72B SFT 微调与推理优化</span>
-        <span class="project-meta">美团 · 点仔AI &nbsp;|&nbsp; 2025.02 — 2025.06</span>
-      </div>
-      <div class="project-desc">
-        基于 LlamaFactory 对千亿参数模型进行 LoRA 微调，在 8 卡 A100 容器中完成大规模分布式训练。
-        <ul>
-          <li>设计 <strong>CoT 多轮对话指令集</strong>，引导模型分步推理，解决复杂菜品搭配的逻辑缺失问题</li>
-          <li>特定意图下菜品搭配准确率提升至 <strong>94%</strong>，幻觉率从 5% 压降至 <strong>0.2%</strong></li>
-          <li>设计基于 <strong>K-Means 的自动数据清洗 Pipeline</strong>，在保持模型性能前提下将训练数据量减少 <strong>60%</strong></li>
-          <li>增大训练序列长度，有效缓解长尾菜品知识遗忘问题</li>
-        </ul>
-      </div>
-      <div class="skills-row">
-        <span class="skill-pill">LlamaFactory</span>
-        <span class="skill-pill">LoRA / SFT</span>
-        <span class="skill-pill">Qwen2.5-72B</span>
-        <span class="skill-pill">CoT</span>
-        <span class="skill-pill">K-Means</span>
-        <span class="skill-pill">A100 GPU</span>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-head">
-        <span class="project-name">搜索广告点击率预测（CTR）</span>
-        <span class="project-meta">美团大数据课程项目 &nbsp;|&nbsp; 2024.11 — 2024.12</span>
-      </div>
-      <div class="project-desc">
-        处理包含 <strong>2000 万条训练集、80 万条测试集</strong>、42 个特征的大规模稀疏数据，综合应用机器学习与深度学习模型进行 CTR 预测。
-        <ul>
-          <li><strong>LightGBM</strong>：优化特征选择与参数调优，有效避免过拟合，AUC 达 <strong>0.6237</strong></li>
-          <li><strong>DIEN 模型</strong>（PyTorch）：结合兴趣池调整权重，利用 RNN + Attention 对长短期兴趣联合建模，提升预测准确性</li>
-        </ul>
-      </div>
-      <div class="skills-row">
-        <span class="skill-pill">PyTorch</span>
-        <span class="skill-pill">LightGBM</span>
-        <span class="skill-pill">RNN / Attention</span>
-        <span class="skill-pill">特征工程</span>
-        <span class="skill-pill">DIEN</span>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-head">
-        <span class="project-name">分布式随机森林航班延误预测</span>
-        <span class="project-meta">分布式系统与大数据分析课程论文 &nbsp;|&nbsp; 2022.11 — 2022.12</span>
-      </div>
-      <div class="project-desc">
-        创新设计<strong>随机森林伪分布式算法</strong>：数据划分 → 并行训练 → 结果汇总，显著提升训练效率。
-        使用 PySpark 对 AirDelay 数据按月份进行分组聚合，绘制折线图、柱状图与热力图，直观呈现各季节延误规律。
-      </div>
-      <div class="skills-row">
-        <span class="skill-pill">PySpark</span>
-        <span class="skill-pill">随机森林</span>
-        <span class="skill-pill">分布式计算</span>
-        <span class="skill-pill">数据可视化</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ╔══════════════════════ 04 EXPERIENCE ════════════════╗ -->
-  <section class="section">
-    <div class="section-head">
-      <span class="section-num">04</span>
       <h2 class="section-title">Experience</h2>
     </div>
 
@@ -591,6 +522,54 @@
     </div>
 
   </section>
+
+
+  <!-- ╔══════════════════════ 04 PROJECTS ══════════════════╗ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name">搜索广告点击率预测（CTR）</span>
+        <span class="project-meta">美团大数据课程项目 &nbsp;|&nbsp; 2024.11 — 2024.12</span>
+      </div>
+      <div class="project-desc">
+        处理包含 <strong>2000 万条训练集、80 万条测试集</strong>、42 个特征的大规模稀疏数据，综合应用机器学习与深度学习模型进行 CTR 预测。
+        <ul>
+          <li><strong>LightGBM</strong>：优化特征选择与参数调优，有效避免过拟合，AUC 达 <strong>0.6237</strong></li>
+          <li><strong>DIEN 模型</strong>（PyTorch）：结合兴趣池调整权重，利用 RNN + Attention 对长短期兴趣联合建模，提升预测准确性</li>
+        </ul>
+      </div>
+      <div class="skills-row">
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">LightGBM</span>
+        <span class="skill-pill">RNN / Attention</span>
+        <span class="skill-pill">特征工程</span>
+        <span class="skill-pill">DIEN</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name">分布式随机森林航班延误预测</span>
+        <span class="project-meta">分布式系统与大数据分析课程论文 &nbsp;|&nbsp; 2022.11 — 2022.12</span>
+      </div>
+      <div class="project-desc">
+        创新设计<strong>随机森林伪分布式算法</strong>：数据划分 → 并行训练 → 结果汇总，显著提升训练效率。
+        使用 PySpark 对 AirDelay 数据按月份进行分组聚合，绘制折线图、柱状图与热力图，直观呈现各季节延误规律。
+      </div>
+      <div class="skills-row">
+        <span class="skill-pill">PySpark</span>
+        <span class="skill-pill">随机森林</span>
+        <span class="skill-pill">分布式计算</span>
+        <span class="skill-pill">数据可视化</span>
+      </div>
+    </div>
+  </section>
+
 
 </div>
 
