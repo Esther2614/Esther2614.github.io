@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+SC:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     /* ═══════════════════════════════════════════════════════
-       🎨 全局变量 — 改颜色/字体只需改这里
+       全局变量
        ═══════════════════════════════════════════════════════ */
     :root {
       --bg:          #f6f2ed;
@@ -43,7 +43,7 @@
     .page { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
 
     /* ═══════════════════════════════════════════════════════
-       🏠 首屏 HEADER — 一眼看全：姓名、定位、联系方式
+       首屏 HEADER
        ═══════════════════════════════════════════════════════ */
     .header {
       padding: 4.5rem 0 3rem;
@@ -138,7 +138,7 @@
     .btn--fill:hover { background: var(--accent); border-color: var(--accent); }
 
     /* ═══════════════════════════════════════════════════════
-       📐 通用 Section 样式
+       通用 Section 样式
        ═══════════════════════════════════════════════════════ */
     .section {
       padding: 3.5rem 0;
@@ -166,12 +166,18 @@
       font-weight: 600;
     }
 
-    /* ── 两列布局 ── */
+    /* 两列布局 */
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
+
+    .edu-block {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(209, 201, 186, 0.5);
+    }
+    .edu-block:last-child { border-bottom: none; }
 
     .info-label {
       font-family: var(--font-mono);
@@ -187,7 +193,7 @@
       line-height: 1.9;
     }
 
-    /* ── 技能标签 ── */
+    /* 技能标签 */
     .skills-row {
       display: flex;
       flex-wrap: wrap;
@@ -207,6 +213,12 @@
     }
     .skill-pill:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
+    .skill-pill--highlight {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .skill-pill--highlight:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
     .skill-category { margin-bottom: 1.5rem; }
     .skill-category:last-child { margin-bottom: 0; }
 
@@ -216,7 +228,7 @@
       margin-bottom: 0.6rem;
     }
 
-    /* ── 项目卡片 ── */
+    /* 项目卡片 */
     .project {
       padding: 1.5rem 0;
       border-bottom: 1px solid rgba(209, 201, 186, 0.5);
@@ -231,6 +243,12 @@
     }
 
     .project-name { font-size: 1rem; font-weight: 600; }
+
+    .project-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+    }
 
     .project-link {
       font-family: var(--font-mono);
@@ -247,7 +265,13 @@
       margin-bottom: 0.8rem;
     }
 
-    /* ── 经历时间线 ── */
+    .project-desc ul {
+      margin: 0.3rem 0 0 1.1rem;
+      list-style: disc;
+    }
+    .project-desc ul li { margin-bottom: 0.2rem; }
+
+    /* 经历时间线 */
     .exp-item {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -265,10 +289,19 @@
     }
 
     .exp-role { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
-    .exp-company { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.4rem; }
-    .exp-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.8; }
+    .exp-company { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem; }
+    .exp-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    .exp-desc ul {
+      margin: 0.2rem 0 0 1.1rem;
+      list-style: disc;
+    }
+    .exp-desc ul li { margin-bottom: 0.25rem; }
 
-    /* ── 底部 ── */
+    /* 底部 */
     .footer {
       padding: 3rem 0;
       text-align: center;
@@ -278,7 +311,7 @@
       letter-spacing: 1px;
     }
 
-    /* ── 入场动画（克制） ── */
+    /* 入场动画 */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -289,7 +322,7 @@
     .section:nth-of-type(3)  { animation: fadeIn 0.5s ease both 0.45s; }
     .section:nth-of-type(4)  { animation: fadeIn 0.5s ease both 0.55s; }
 
-    /* ── 响应式 ── */
+    /* 响应式 */
     @media (max-width: 640px) {
       .page { padding: 0 1.2rem; }
       .header { padding: 3rem 0 2rem; }
@@ -306,71 +339,76 @@
 
 <div class="page">
 
-  <!-- ╔═══════════════════════════════════════════════════╗
-       ║  ✏️ 修改区域 1：首屏个人信息                       ║
-       ║  替换：名字、邮箱、电话、GitHub、标签行、简介       ║
-       ╚═══════════════════════════════════════════════════╝ -->
+  <!-- ╔══════════════════════ HEADER ══════════════════════╗ -->
   <header class="header">
     <div class="header-top">
       <div>
         <h1 class="header-name">吴勰昀</h1>
+        <div class="header-name-en">Xieyun Wu</div>
       </div>
       <div class="header-contact">
-        <div><a href="mailto:wuxieyun24@tsinghua.edu.cn">wuxieyun24@tsinghua.edu.cn</a></div>
-        <div><a href="tel:+8613800001111">153-9151-0071</a></div>
+        <div><a href="mailto:wuxieyun24@mails.tsinghua.edu.cn">wuxieyun24@mails.tsinghua.edu.cn</a></div>
+        <div><a href="tel:+8615301078553">153-0107-8553</a></div>
+        <div>中共党员</div>
       </div>
     </div>
 
     <div class="header-tagline">
-      <span>清华大学 · 管理科学与工程 · 2027届</span>
+      <span>清华大学 MSE · 哥伦比亚大学 MSOR · 2027届</span>
       <span class="dot">·</span>
-      <span>求职意向：AI应用算法/Agent开发</span>
+      <span>AI应用算法 / Agent开发</span>
       <span class="dot">·</span>
       <span>北京 / 上海 / 深圳 / 杭州</span>
     </div>
 
     <p class="header-bio">
-      专注于AI应用算法与Agent开发，具备扎实的数学基础与丰富的工程实践。
+      具备大模型全链路工程实战经验——从千亿参数模型 LoRA 微调、CoT 指令集构建到高质量数据 Pipeline 设计。
+      扎实的数学与统计基础（国奖 / 数学建模一等奖），在美团完成大模型 SFT 落地，将菜品搭配幻觉率从 5% 压降至 0.2%。
+      专注以 LLM + Agent 技术解决真实业务问题。
     </p>
 
     <div class="header-actions">
-      <a href="./resume.pdf" class="btn btn--fill" target="_blank">↓ 下载简历</a>
-      <a href="mailto:wuxieyun24@tsinghua.edu.cn" class="btn">✉ 联系我</a>
+      <a href="./简历0410.pdf" class="btn btn--fill" target="_blank">↓ 下载简历</a>
+      <a href="mailto:wuxieyun24@mails.tsinghua.edu.cn" class="btn">✉ 联系我</a>
     </div>
   </header>
 
-  <!-- ╔═══════════════════════════════════════════════════╗
-       ║  ✏️ 修改区域 2：教育背景                           ║
-       ╚═══════════════════════════════════════════════════╝ -->
+  <!-- ╔══════════════════════ 01 EDUCATION ═════════════════╗ -->
   <section class="section">
     <div class="section-head">
       <span class="section-num">01</span>
       <h2 class="section-title">Education</h2>
     </div>
-    <div class="two-col">
-      <div>
-        <div class="info-label">硕士</div>
-        <div class="info-value">
-          清华大学 · 管理科学与工程<br />
-          2024.09 — 2027.06 · GPA 3.8/4.0<br />
-          核心课程：机器学习与Python应用(A)；优化理论与方法(A)；人因工程(A)
-        </div>
+
+    <div class="edu-block">
+      <div class="info-label">硕士 · 清华大学</div>
+      <div class="info-value">
+        经济管理学院 · <strong>清华-哥大商务分析硕士</strong>，管理科学与工程<br />
+        2024.08 — 2027.06 &nbsp;·&nbsp; GPA 3.82 / 4.0<br />
+        核心课程：商务智能 (A)、机器学习与 Python 应用 (A)、优化理论与方法 (A)
       </div>
-      <div>
-        <div class="info-label">本科</div>
-        <div class="info-value">
-          中央财经大学 · 数据科学与大数据技术<br />
-          2020.09 — 2024.06 · GPA  87.42/100<br />
-          个人荣誉：国家奖学金（2%）；中央财经大学优秀毕业生（前5%）；美国大学生数学建模竞赛(一等奖，8%)
-        </div>
+    </div>
+
+    <div class="edu-block">
+      <div class="info-label">硕士 · Columbia University</div>
+      <div class="info-value">
+        Fu Foundation School of Engineering · <strong>M.S. Operations Research (MSOR)</strong><br />
+        2025.08 — 2026.06 &nbsp;·&nbsp; GPA 3.8 / 4.0<br />
+        核心课程：随机过程 (A-)、商业分析 (A-)、人因工程 (A)
+      </div>
+    </div>
+
+    <div class="edu-block">
+      <div class="info-label">本科 · 中央财经大学</div>
+      <div class="info-value">
+        统计与数学学院 · 数据科学与大数据技术<br />
+        2020.09 — 2024.06 &nbsp;·&nbsp; GPA 87.42 / 100 &nbsp;·&nbsp; IELTS 7（听力 8.5）<br />
+        荣誉：国家奖学金 (2%)、优秀毕业生 (前 5%)、美国大学生数学建模竞赛一等奖 (8%)
       </div>
     </div>
   </section>
 
-  <!-- ╔═══════════════════════════════════════════════════╗
-       ║  ✏️ 修改区域 3：技术栈                             ║
-       ║  增删标签：复制/删除 <span class="skill-pill"> 即可 ║
-       ╚═══════════════════════════════════════════════════╝ -->
+  <!-- ╔══════════════════════ 02 SKILLS ════════════════════╗ -->
   <section class="section">
     <div class="section-head">
       <span class="section-num">02</span>
@@ -378,28 +416,60 @@
     </div>
 
     <div class="skill-category">
-      <div class="skill-category-name">编程语言</div>
+      <div class="skill-category-name">大模型 & Agent 核心技术</div>
       <div class="skills-row">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">SQL</span>
-        <span class="skill-pill">Java</span>
+        <span class="skill-pill skill-pill--highlight">LLM 微调 (SFT / LoRA)</span>
+        <span class="skill-pill skill-pill--highlight">Prompt Engineering</span>
+        <span class="skill-pill skill-pill--highlight">CoT 指令集设计</span>
+        <span class="skill-pill skill-pill--highlight">RAG</span>
+        <span class="skill-pill skill-pill--highlight">意图识别</span>
+        <span class="skill-pill skill-pill--highlight">Multi-Agent</span>
+        <span class="skill-pill">LlamaFactory</span>
+        <span class="skill-pill">vLLM</span>
+        <span class="skill-pill">幻觉抑制</span>
       </div>
     </div>
 
+    <div class="skill-category">
+      <div class="skill-category-name">机器学习 & 深度学习</div>
+      <div class="skills-row">
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">LightGBM</span>
+        <span class="skill-pill">RNN / Attention</span>
+        <span class="skill-pill">随机森林</span>
+        <span class="skill-pill">K-Means</span>
+        <span class="skill-pill">特征工程</span>
+        <span class="skill-pill">DIEN</span>
+      </div>
+    </div>
 
     <div class="skill-category">
-      <div class="skill-category-name">工具 & 平台</div>
+      <div class="skill-category-name">数据工程 & 分析</div>
+      <div class="skills-row">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">PySpark</span>
+        <span class="skill-pill">数据 Pipeline</span>
+        <span class="skill-pill">数据可视化</span>
+        <span class="skill-pill">统计建模</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-category-name">工程 & 平台</div>
       <div class="skills-row">
         <span class="skill-pill">Git</span>
         <span class="skill-pill">Linux</span>
+        <span class="skill-pill">A100 GPU 集群</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">向量数据库</span>
       </div>
     </div>
   </section>
 
-  <!-- ╔═══════════════════════════════════════════════════╗
-       ║  ✏️ 修改区域 4：项目经历                           ║
-       ║  增加项目：复制一整个 <div class="project"> 块     ║
-       ╚═══════════════════════════════════════════════════╝ -->
+  <!-- ╔══════════════════════ 03 PROJECTS ══════════════════╗ -->
   <section class="section">
     <div class="section-head">
       <span class="section-num">03</span>
@@ -408,60 +478,68 @@
 
     <div class="project">
       <div class="project-head">
-        <span class="project-name">分布式微服务电商平台</span>
-        <a class="project-link" href="https://github.com/your-username/project-1" target="_blank">source →</a>
+        <span class="project-name">Qwen2.5-72B SFT 微调与推理优化</span>
+        <span class="project-meta">美团 · 点仔AI &nbsp;|&nbsp; 2025.02 — 2025.06</span>
       </div>
-      <p class="project-desc">
-        基于 Spring Cloud 的全链路电商系统，涵盖用户、商品、订单、支付等微服务。
-        Redis 分布式缓存 + RabbitMQ 异步消息 + Sentinel 限流降级，支撑 5000+ QPS。
-      </p>
+      <div class="project-desc">
+        基于 LlamaFactory 对千亿参数模型进行 LoRA 微调，在 8 卡 A100 容器中完成大规模分布式训练。
+        <ul>
+          <li>设计 <strong>CoT 多轮对话指令集</strong>，引导模型分步推理，解决复杂菜品搭配的逻辑缺失问题</li>
+          <li>特定意图下菜品搭配准确率提升至 <strong>94%</strong>，幻觉率从 5% 压降至 <strong>0.2%</strong></li>
+          <li>设计基于 <strong>K-Means 的自动数据清洗 Pipeline</strong>，在保持模型性能前提下将训练数据量减少 <strong>60%</strong></li>
+          <li>增大训练序列长度，有效缓解长尾菜品知识遗忘问题</li>
+        </ul>
+      </div>
       <div class="skills-row">
-        <span class="skill-pill">Spring Cloud</span>
-        <span class="skill-pill">Redis</span>
-        <span class="skill-pill">RabbitMQ</span>
-        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">LlamaFactory</span>
+        <span class="skill-pill">LoRA / SFT</span>
+        <span class="skill-pill">Qwen2.5-72B</span>
+        <span class="skill-pill">CoT</span>
+        <span class="skill-pill">K-Means</span>
+        <span class="skill-pill">A100 GPU</span>
       </div>
     </div>
 
     <div class="project">
       <div class="project-head">
-        <span class="project-name">RAG 智能问答系统</span>
-        <a class="project-link" href="https://github.com/your-username/project-2" target="_blank">source →</a>
+        <span class="project-name">搜索广告点击率预测（CTR）</span>
+        <span class="project-meta">美团大数据课程项目 &nbsp;|&nbsp; 2024.11 — 2024.12</span>
       </div>
-      <p class="project-desc">
-        基于检索增强生成技术的企业知识库问答系统。LangChain 驱动文档解析与向量检索，
-        对接大语言模型实现多轮对话与引用溯源。
-      </p>
+      <div class="project-desc">
+        处理包含 <strong>2000 万条训练集、80 万条测试集</strong>、42 个特征的大规模稀疏数据，综合应用机器学习与深度学习模型进行 CTR 预测。
+        <ul>
+          <li><strong>LightGBM</strong>：优化特征选择与参数调优，有效避免过拟合，AUC 达 <strong>0.6237</strong></li>
+          <li><strong>DIEN 模型</strong>（PyTorch）：结合兴趣池调整权重，利用 RNN + Attention 对长短期兴趣联合建模，提升预测准确性</li>
+        </ul>
+      </div>
       <div class="skills-row">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">LangChain</span>
-        <span class="skill-pill">FastAPI</span>
-        <span class="skill-pill">Milvus</span>
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">LightGBM</span>
+        <span class="skill-pill">RNN / Attention</span>
+        <span class="skill-pill">特征工程</span>
+        <span class="skill-pill">DIEN</span>
       </div>
     </div>
 
     <div class="project">
       <div class="project-head">
-        <span class="project-name">实时日志监控平台</span>
-        <a class="project-link" href="https://github.com/your-username/project-3" target="_blank">source →</a>
+        <span class="project-name">分布式随机森林航班延误预测</span>
+        <span class="project-meta">分布式系统与大数据分析课程论文 &nbsp;|&nbsp; 2022.11 — 2022.12</span>
       </div>
-      <p class="project-desc">
-        基于 ELK 技术栈的日志收集与分析平台，支持多维检索、告警规则、
-        可视化 Dashboard。日均处理 2000 万条日志。
-      </p>
+      <div class="project-desc">
+        创新设计<strong>随机森林伪分布式算法</strong>：数据划分 → 并行训练 → 结果汇总，显著提升训练效率。
+        使用 PySpark 对 AirDelay 数据按月份进行分组聚合，绘制折线图、柱状图与热力图，直观呈现各季节延误规律。
+      </div>
       <div class="skills-row">
-        <span class="skill-pill">Go</span>
-        <span class="skill-pill">Elasticsearch</span>
-        <span class="skill-pill">Kafka</span>
-        <span class="skill-pill">Grafana</span>
+        <span class="skill-pill">PySpark</span>
+        <span class="skill-pill">随机森林</span>
+        <span class="skill-pill">分布式计算</span>
+        <span class="skill-pill">数据可视化</span>
       </div>
     </div>
   </section>
 
-  <!-- ╔═══════════════════════════════════════════════════╗
-       ║  ✏️ 修改区域 5：实习与经历                         ║
-       ║  增加经历：复制一整个 <div class="exp-item"> 块    ║
-       ╚═══════════════════════════════════════════════════╝ -->
+  <!-- ╔══════════════════════ 04 EXPERIENCE ════════════════╗ -->
   <section class="section">
     <div class="section-head">
       <span class="section-num">04</span>
@@ -469,37 +547,55 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">2024.06 — 09</div>
+      <div class="exp-date">2025.02 — 2025.06</div>
       <div>
-        <div class="exp-role">后端开发实习生</div>
-        <div class="exp-company">XX科技有限公司 · 基础架构部</div>
-        <div class="exp-desc">参与核心微服务框架开发，负责网关限流策略设计，接口响应时间优化约 30%。</div>
+        <div class="exp-role">大模型应用算法实习生</div>
+        <div class="exp-company">美团 · 智能交互-大模型应用算法（点仔 AI）· 北京</div>
+        <div class="exp-desc">
+          <ul>
+            <li>负责 Qwen2.5-72B 的 LoRA SFT 微调与推理优化，主导 CoT 指令集设计，在菜品搭配任务上将幻觉率从 5% 压降至 0.2%</li>
+            <li>构建基于 K-Means 的自动化数据清洗 Pipeline，在保持模型性能的前提下将训练数据量减少 60%，大幅降低训练成本</li>
+            <li>通过增大训练序列长度解决长尾菜品知识遗忘问题，推动模型稳定上线</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">2023.07 — 09</div>
+      <div class="exp-date">2024.01 — 2024.07</div>
       <div>
-        <div class="exp-role">软件开发实习生</div>
-        <div class="exp-company">XX互联网公司 · 数据平台部</div>
-        <div class="exp-desc">优化数据中台 ETL 流水线，使用 Spark 清洗大规模数据，处理效率提升 40%。</div>
+        <div class="exp-role">量化交易员</div>
+        <div class="exp-company">上海磐松私募基金管理有限公司 · 投资组合部（资管规模百亿+）· 上海</div>
+        <div class="exp-desc">
+          <ul>
+            <li>研究 2014—2023 年<strong>十亿条</strong>股票数据，以最低价偏移、封板强度、涨停时间占比等变量构建涨停板策略研究框架，研究结论直接指导盘中交易决策</li>
+            <li>参与交易系统开发，对接 <strong>8 家券商、2 家算法商</strong>交易 API，实现交易自动上传，将交易上传时间缩短 <strong>10 分钟</strong></li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">2022.09 — 至今</div>
+      <div class="exp-date">2023.10 — 2024.01</div>
       <div>
-        <div class="exp-role">研究生助研</div>
-        <div class="exp-company">XX大学 · XX实验室</div>
-        <div class="exp-desc">参与导师科研课题，发表学术论文 X 篇，负责实验设计与论文撰写。</div>
+        <div class="exp-role">商业分析实习生</div>
+        <div class="exp-company">北京滴滴科技发展有限公司 · 北京</div>
+        <div class="exp-desc">
+          <ul>
+            <li>建立城市备电数量与电池调拨单价测算模型，实现城市间电池合理调拨，在<strong>资产满足率 100%</strong> 的前提下降低预算 <strong>20%</strong></li>
+            <li>根据城市故障电池数据搭建电池监测 C 端可视化看板，每日诊断次数、待鉴定故障电池数等核心指标实时可视化</li>
+            <li>汇总每日电池调拨数据，分析峰值时间使用次数，为备电数量决策提供数据支撑，促进电池周转提效</li>
+          </ul>
+        </div>
       </div>
     </div>
+
   </section>
 
 </div>
 
 <footer class="footer">
-  <div class="page">Built with care · 2025</div>
+  <div class="page">Built with care · 2026</div>
 </footer>
 
 </body>
